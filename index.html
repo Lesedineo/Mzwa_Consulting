@@ -277,6 +277,42 @@
   --surface-color: #000000;
   background: var(--overlay-background-color, #000000);
 }
+@media (max-width: 768px) {
+  #navigation_5328900_4809811 nav {
+    display: none !important;
+    width: 100% !important;
+  }
+
+  .hamburger.navIcon {
+    display: block !important;
+    cursor: pointer;
+    position: absolute !important;
+    right: 16px !important;
+    top: 18px !important;
+    z-index: 20 !important;
+  }
+
+  #navigation_5328900_4809811.open nav,
+  #navigation_5328900_4809811.is-open nav,
+  .navigation.open nav {
+    display: flex !important;
+    flex-direction: column !important;
+    position: absolute !important;
+    top: 72px !important;
+    right: 0 !important;
+    left: 0 !important;
+    background: var(--overlay-background-color, #000) !important;
+    padding: 16px 24px !important;
+  }
+
+  #navigation_5328900_4809811 nav a {
+    display: block !important;
+    width: 100% !important;
+    padding: 12px 0 !important;
+    font-size: 1.4em !important;
+    text-align: right !important;
+  }
+}
 </style>
 <nav style="display:flex;width:100%;justify-content:flex-end;align-items:center;flex-flow:row wrap;font-size:2.8000000000000003em;">
   <a class="link_00000000510004500000000000000001" href="index.html"><span>Work</span></a>
