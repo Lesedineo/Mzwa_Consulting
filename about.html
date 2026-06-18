@@ -1206,5 +1206,21 @@
       src="https://static.cmcdn.net/23/1.1.20/scripts/app.js"
       crossorigin
     ></script>
+    <script>
+      (function(){
+        function setupNav(){
+          var navSpan = document.getElementById('navigation_5328900_4809811');
+          if(!navSpan) return;
+          var hamburgers = document.getElementsByClassName('hamburger');
+          for(var i=0;i<hamburgers.length;i++){
+            hamburgers[i].addEventListener('click', function(e){
+              navSpan.classList.toggle('open');
+            });
+          }
+        }
+        if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', setupNav);
+        else setupNav();
+      })();
+    </script>
   </body>
 </html>
