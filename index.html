@@ -235,6 +235,7 @@
 </style>
     <link rel="stylesheet" href="https://static.cmcdn.net/23/1.1.20/styles/all.css" />
     <link rel="stylesheet" href="https://static.cmcdn.net/23/1.1.20/styles/vendor/swiper.css" />
+    <link rel="stylesheet" href="/styles/fonts.css" />
     
 
     
@@ -276,6 +277,43 @@
 #navigation_5328900_4809811 .overlay {
   --surface-color: #000000;
   background: var(--overlay-background-color, #000000);
+}
+/* Ensure hamburger/nav responsive behavior */
+.hamburger.navIcon { display: none; }
+
+@media (max-width: 768px) {
+  #navigation_5328900_4809811 nav {
+    display: none !important;
+  }
+
+  .hamburger.navIcon {
+    display: block !important;
+    cursor: pointer;
+    z-index: 20;
+    position: absolute;
+    right: 16px;
+    top: 18px;
+  }
+
+  /* Support common toggle class names used by Navigation.js */
+  #navigation_5328900_4809811.open nav,
+  #navigation_5328900_4809811.is-open nav,
+  .navigation.open nav {
+    display: flex !important;
+    flex-direction: column !important;
+    position: absolute !important;
+    top: 64px !important;
+    right: 0 !important;
+    left: 0 !important;
+    background: var(--overlay-background-color, #000) !important;
+    padding: 16px 24px !important;
+  }
+
+  #navigation_5328900_4809811 nav a {
+    padding: 12px 0;
+    font-size: 1.4em;
+    display: block;
+  }
 }
 </style>
 <nav style="display:flex;width:100%;justify-content:flex-end;align-items:center;flex-flow:row wrap;font-size:2.8000000000000003em;">
