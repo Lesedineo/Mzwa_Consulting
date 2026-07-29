@@ -327,32 +327,43 @@
     z-index: 20 !important;
   }
 
- #navigation_5328900_4809811.open nav,
-#navigation_5328900_4809811.is-open nav,
-.navigation.open nav {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  position: fixed !important;
-  top: 0 !important;
-  right: 0 !important;
-  left: 0 !important;
-  bottom: 0 !important;
-  height: 100vh !important;
-  width: 100% !important;
-  background: var(--overlay-background-color, #000) !important;
-  padding: 16px 24px !important;
-  z-index: 15 !important;
-}
+  /* MOBILE MENU FIX (added): The dropdown previously used
+     "position: absolute; top: 72px;", which positions the menu relative to
+     whichever ancestor element happens to establish the nearest positioning
+     context. On this page that ancestor is not predictable/near the top, so
+     the menu was rendering far down the page instead of just below the
+     header. Switching to "position: fixed" anchors it directly to the
+     visible screen instead, and the flexbox centering below places the
+     "Work" / "About" links in the middle of that screen, as requested. */
+  #navigation_5328900_4809811.open nav,
+  #navigation_5328900_4809811.is-open nav,
+  .navigation.open nav {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    height: 100vh !important;
+    width: 100% !important;
+    background: var(--overlay-background-color, #000) !important;
+    padding: 16px 24px !important;
+    z-index: 15 !important;
+  }
 
- #navigation_5328900_4809811 nav a {
-  display: block !important;
-  width: 100% !important;
-  padding: 16px 0 !important;
-  font-size: 1.4em !important;
-  text-align: center !important;
-}
+  /* Center the link text instead of right-aligning it, and give the two
+     links some breathing room now that they sit in the middle of the
+     screen rather than a top-anchored dropdown. */
+  #navigation_5328900_4809811 nav a {
+    display: block !important;
+    width: 100% !important;
+    padding: 16px 0 !important;
+    font-size: 1.4em !important;
+    text-align: center !important;
+  }
 }
 </style>
 <nav style="display:flex;width:100%;justify-content:flex-end;align-items:center;flex-flow:row wrap;font-size:2.8000000000000003em;">
@@ -715,7 +726,13 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(1)/background(fff)/1100x1556.jpeg?auto=webp" width="1100" height="1556" />
+      <!-- LOADING FIX (added): This image, and 24 others like it further down
+           this page, previously had no lazy-loading at all, so the browser
+           downloaded all of them immediately on page load, even the ones far
+           below the fold. Adding loading="lazy" tells the browser to only
+           download each image when it's about to scroll into view, which
+           should noticeably speed up initial load, especially on mobile. -->
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(1)/background(fff)/1100x1556.jpeg?auto=webp" width="1100" height="1556" />
       
 
       
@@ -736,7 +753,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(2)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(2)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
       
 
       
@@ -751,7 +768,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(3)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(3)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
       
 
       
@@ -766,7 +783,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(4)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(4)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
       
 
       
@@ -781,7 +798,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(5)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(5)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
       
 
       
@@ -796,7 +813,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(6)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(6)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
       
 
       
@@ -811,7 +828,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(7)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(7)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
       
 
       
@@ -826,7 +843,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(8)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(8)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
       
 
       
@@ -841,7 +858,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(9)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(9)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
       
 
       
@@ -856,7 +873,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(10)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(10)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
       
 
       
@@ -871,7 +888,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(11)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(11)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
       
 
       
@@ -886,7 +903,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(12)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(12)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
       
 
       
@@ -901,7 +918,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(13)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(13)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
       
 
       
@@ -916,7 +933,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(14)/background(fff)/1100x1556.jpeg?auto=webp" width="1100" height="1556" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/kG8GMDQqhigeHhXwCOSr9q;page(14)/background(fff)/1100x1556.jpeg?auto=webp" width="1100" height="1556" />
       
 
       
@@ -3417,7 +3434,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/kH2ANH8SsxDdyODPAkBXX8;page(1)/background(fff)/1100x1556.jpeg?auto=webp" width="1100" height="1556" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/kH2ANH8SsxDdyODPAkBXX8;page(1)/background(fff)/1100x1556.jpeg?auto=webp" width="1100" height="1556" />
       
 
       
@@ -3438,7 +3455,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/kH2ANH8SsxDdyODPAkBXX8;page(2)/background(fff)/1100x1556.jpeg?auto=webp" width="1100" height="1556" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/kH2ANH8SsxDdyODPAkBXX8;page(2)/background(fff)/1100x1556.jpeg?auto=webp" width="1100" height="1556" />
       
 
       
@@ -3453,7 +3470,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/kH2ANH8SsxDdyODPAkBXX8;page(3)/background(fff)/1100x1556.jpeg?auto=webp" width="1100" height="1556" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/kH2ANH8SsxDdyODPAkBXX8;page(3)/background(fff)/1100x1556.jpeg?auto=webp" width="1100" height="1556" />
       
 
       
@@ -3468,7 +3485,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/kH2ANH8SsxDdyODPAkBXX8;page(4)/background(fff)/1100x1556.jpeg?auto=webp" width="1100" height="1556" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/kH2ANH8SsxDdyODPAkBXX8;page(4)/background(fff)/1100x1556.jpeg?auto=webp" width="1100" height="1556" />
       
 
       
@@ -5154,7 +5171,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/6R2LPuqcotzf4EUq8MJ1Em;page(1)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/6R2LPuqcotzf4EUq8MJ1Em;page(1)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
       
 
       
@@ -5169,7 +5186,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/6R2LPuqcotzf4EUq8MJ1Em;page(2)/background(fff)/1100x388.jpeg?auto=webp" width="1100" height="388" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/6R2LPuqcotzf4EUq8MJ1Em;page(2)/background(fff)/1100x388.jpeg?auto=webp" width="1100" height="388" />
       
 
       
@@ -5184,7 +5201,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/6R2LPuqcotzf4EUq8MJ1Em;page(3)/background(fff)/1100x388.jpeg?auto=webp" width="1100" height="388" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/6R2LPuqcotzf4EUq8MJ1Em;page(3)/background(fff)/1100x388.jpeg?auto=webp" width="1100" height="388" />
       
 
       
@@ -5199,7 +5216,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/6R2LPuqcotzf4EUq8MJ1Em;page(4)/background(fff)/1100x388.jpeg?auto=webp" width="1100" height="388" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/6R2LPuqcotzf4EUq8MJ1Em;page(4)/background(fff)/1100x388.jpeg?auto=webp" width="1100" height="388" />
       
 
       
@@ -5214,7 +5231,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/6R2LPuqcotzf4EUq8MJ1Em;page(5)/background(fff)/1100x388.jpeg?auto=webp" width="1100" height="388" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/6R2LPuqcotzf4EUq8MJ1Em;page(5)/background(fff)/1100x388.jpeg?auto=webp" width="1100" height="388" />
       
 
       
@@ -5229,7 +5246,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/6R2LPuqcotzf4EUq8MJ1Em;page(6)/background(fff)/1100x388.jpeg?auto=webp" width="1100" height="388" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/6R2LPuqcotzf4EUq8MJ1Em;page(6)/background(fff)/1100x388.jpeg?auto=webp" width="1100" height="388" />
       
 
       
@@ -5244,7 +5261,7 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
     <div class="media-wrapper">
 
       
-      <img src="https://carbon-media.accelerator.net/0000000mmi0/6R2LPuqcotzf4EUq8MJ1Em;page(7)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
+      <img loading="lazy" src="https://carbon-media.accelerator.net/0000000mmi0/6R2LPuqcotzf4EUq8MJ1Em;page(7)/background(fff)/1100x777.jpeg?auto=webp" width="1100" height="777" />
       
 
       
