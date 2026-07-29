@@ -243,6 +243,41 @@
   </head>
 
   <body class="site desktop  " data-min-contrast="0.05">
+
+    <!-- ===================================================================
+         MOBILE FIX (added): This site was originally built on Carbonmade,
+         which normally sets the <body> class to "desktop" or "phone"
+         dynamically depending on the visiting device. Because this page is
+         a static, self-hosted export of that site, the class was frozen as
+         "desktop" for EVERY visitor -- including mobile users. Since large
+         parts of this site's CSS (the hamburger menu, layout blocks, etc.)
+         only activate correctly when the body has the "phone" class, mobile
+         visitors were stuck with desktop behavior, which is why the
+         hamburger menu wasn't showing up on phones.
+         This script re-detects the real device width on load (and on
+         resize/rotation) and applies the correct class, BEFORE any of the
+         original Carbonmade scripts further down the page run. It does not
+         change any layout, styling, or content -- it only restores the
+         device-detection behavior that the static export lost. -->
+    <script>
+      (function () {
+        function applyDeviceClass() {
+          var width = window.innerWidth;
+          /* 768px matches this site's own hamburger-menu breakpoint (see the
+             @media (max-width: 768px) rule further down the page) */
+          var deviceClass = width <= 768 ? "phone" : "desktop";
+          document.body.className = document.body.className
+            .replace(/\b(phone|desktop|tablet)\b/g, "")
+            .replace(/\s+/g, " ")
+            .trim();
+          document.body.classList.add("site", deviceClass);
+        }
+        applyDeviceClass();
+        window.addEventListener("resize", applyDeviceClass);
+      })();
+    </script>
+    <!-- =================================================================== -->
+
     <div class="page loading" style="background:#000000;--background-color:#000000;">
   
 
