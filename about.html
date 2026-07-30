@@ -2,11 +2,28 @@
 <html>
   <head>
     <title>About - M.MAKHANYA</title>
-    <script
-      type="text/javascript"
-      src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=28phFGPuY4FdpZEZXnjIeuXa2mjhYNyjvdTU9g3FnMf72BogJb1KwT5JRuvyavZimRpFZ-XI3pNYnYG1NEt5FQ"
-      charset="UTF-8"
-    ></script>
+    <!-- REMOVED (was here): a Kaspersky antivirus script tag
+         (gc.kis.v2.scr.kaspersky-labs.com) that isn't part of this site at
+         all -- it was accidentally captured when the page was saved via
+         "Save Page As" with Kaspersky's browser protection installed. It
+         was a render-blocking script at the very top of <head>, pointing to
+         a session-specific URL that would likely fail or hang for every
+         visitor, adding unnecessary delay before the rest of the page could
+         even start loading. -->
+
+    <!-- LOADING FIX (added): preconnect hints tell the browser to start the
+         DNS lookup + connection setup for these external domains
+         immediately, in parallel with everything else, instead of waiting
+         until the browser actually reaches the first <link>/<script>/<img>
+         tag that needs them. This shaves some time off getting each of
+         those first bytes back, especially on higher-latency mobile
+         connections. -->
+    <link rel="preconnect" href="https://static.cmcdn.net" crossorigin />
+    <link
+      rel="preconnect"
+      href="https://carbon-media.accelerator.net"
+      crossorigin
+    />
 
     <style id="root-styles">
       :root {
@@ -341,6 +358,16 @@
                 z-index: 20 !important;
               }
 
+              /* MOBILE MENU FIX (added): The dropdown previously used
+                 "position: absolute; top: 72px;", which positions the menu
+                 relative to whichever ancestor element happens to establish
+                 the nearest positioning context. On this page that ancestor
+                 is not predictable/near the top, so the menu was rendering
+                 far down the page instead of just below the header.
+                 Switching to "position: fixed" anchors it directly to the
+                 visible screen instead, and the flexbox centering below
+                 places the "Work" / "About" links in the middle of that
+                 screen, as requested. */
               #navigation_5328900_4809811.open nav,
               #navigation_5328900_4809811.is-open nav,
               .navigation.open nav {
@@ -360,6 +387,9 @@
                 z-index: 15 !important;
               }
 
+              /* Center the link text instead of right-aligning it, and give
+                 the two links some breathing room now that they sit in the
+                 middle of the screen rather than a top-anchored dropdown. */
               #navigation_5328900_4809811 nav a {
                 display: block !important;
                 width: 100% !important;
@@ -1148,7 +1178,10 @@
         </footer>
       </div>
     </div>
-    <script src="https://static.cmcdn.net/libs/player/3.8.2/hls.js"></script>
+    <script
+      defer
+      src="https://static.cmcdn.net/libs/player/3.8.2/hls.js"
+    ></script>
     <script
       src="https://static.cmcdn.net/libs/corejs/2.9.0/corejs.js"
       integrity="sha256-H4af5AcfTSO9YmJ79ol6bab6+TzSWWmMXKM4fwdxRQU="

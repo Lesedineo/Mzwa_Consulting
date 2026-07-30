@@ -3,7 +3,25 @@
 <html>
   <head>
     <title>M.MAKHANYA</title>
-    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=mk--mpZkzT0HdopXyb55nWu4hzSkOWTCC4mnxx49W-MOK2VFW_XIrKMAKA4rBik3clvp32NnKYR7j1i2pTZqtw" charset="UTF-8"></script>
+    <!-- REMOVED (was here): a Kaspersky antivirus script tag
+         (gc.kis.v2.scr.kaspersky-labs.com) that isn't part of this site at
+         all -- it was accidentally captured when the page was saved via
+         "Save Page As" with Kaspersky's browser protection installed. It
+         was a render-blocking script at the very top of <head>, pointing to
+         a session-specific URL that would likely fail or hang for every
+         visitor, adding unnecessary delay before the rest of the page could
+         even start loading. -->
+
+    <!-- LOADING FIX (added): preconnect hints tell the browser to start the
+         DNS lookup + connection setup for these external domains
+         immediately, in parallel with everything else, instead of waiting
+         until the browser actually reaches the first <link>/<script>/<img>
+         tag that needs them. Since this page loads its CSS, ~23 JS
+         libraries, and all images from these two domains, this shaves some
+         time off getting each of those first bytes back, especially on
+         higher-latency mobile connections. -->
+    <link rel="preconnect" href="https://static.cmcdn.net" crossorigin />
+    <link rel="preconnect" href="https://carbon-media.accelerator.net" crossorigin />
 
     <style id="root-styles">
 :root {
@@ -5374,29 +5392,37 @@ carbon-shield { display:block; position:absolute; top:0; left:0; width:100%; hei
   </div>
   
 </div>
-    <script src="https://static.cmcdn.net/libs/player/3.8.2/hls.js"></script>
-    <script src="https://static.cmcdn.net/libs/corejs/2.9.0/corejs.js" integrity="sha256-H4af5AcfTSO9YmJ79ol6bab6+TzSWWmMXKM4fwdxRQU=" crossorigin></script>
-    <script src="https://static.cmcdn.net/libs/router/1.6.0/router.js" integrity="sha256-4IUSi5DVzvBoIJVNfZ416+yuCOs+cry22iJG94eaqW8=" crossorigin></script>
-    <script src="https://static.cmcdn.net/libs/gestures/0.6.0/gestures.js" integrity="sha256-ylEa69hezIFUAga1cMRcngK6Tf9K+HJgzHUSPswYKoU=" crossorigin></script>
-    <script src="https://static.cmcdn.net/23/1.1.20/scripts/vendor/anime.js" crossorigin></script>
-    <script src="https://static.cmcdn.net/23/1.1.20/scripts/vendor/swiper.js" crossorigin></script>
-    <script src="https://static.cmcdn.net/libs/cursor/0.6.3/cursor.js" integrity="sha256-K3IY3QiVV2UvpT+BaPTD2YjNCx5nT5LLJvNqGQ3L3Is=" crossorigin></script>
-    <script src="https://static.cmcdn.net/libs/lightbox/0.23.0/lightbox.js" integrity="sha256-t/UfAWPAS6cjMlcR5oslHiY3cL3IVuUpW/ceuFKBZC4=" crossorigin></script>
-    <script src="https://static.cmcdn.net/libs/forms/4.0.2/forms.js" integrity="sha256-GBwrpMjlOgCPfECaqKSY6jQZU4eKX9Uncc0w90muz94=" crossorigin></script>
-    <script src="https://static.cmcdn.net/libs/scrollable/3.4.0/scrollable.js" integrity="sha256-baiuPcjdbyEwBScpM1XFcd3KntTAMdNFrfEtB8+Qpm4=" crossorigin></script>
-    <script src="https://static.cmcdn.net/libs/player/3.8.2/player.js" integrity="sha256-5eC5ruDiSOZ8vs10G8QfH7KRtp3Rt8rYNhCUQE/6tPk=" crossorigin></script>
-    <script src="https://static.cmcdn.net/libs/lazyjs/2.7.0/lazyjs.js" integrity="sha256-LKzXP6kCFe7HjJizvZTZVZw9VUMXTvJ983WmdTBf5+o=" crossorigin></script>
-    <script src="https://static.cmcdn.net/23/1.1.20/scripts/chroma.js" crossorigin></script>
-    <script src="https://static.cmcdn.net/23/1.1.20/scripts/contrast.js" crossorigin></script>
-    <script src="https://static.cmcdn.net/23/1.1.20/scripts/functions.js" crossorigin></script>
-    <script src="https://static.cmcdn.net/23/1.1.20/scripts/fitty.js" crossorigin></script>
-    <script src="https://static.cmcdn.net/23/1.1.20/scripts/blocks.js" crossorigin></script>
-    <script src="https://static.cmcdn.net/23/1.1.20/scripts/transitions.js" crossorigin></script>
-    <script src="https://static.cmcdn.net/23/1.1.20/scripts/site/Navigation.js" crossorigin></script>
-    <script src="https://static.cmcdn.net/23/1.1.20/scripts/components/Flipbook.js" crossorigin></script>
-    <script src="https://static.cmcdn.net/23/1.1.20/scripts/components/BeforeAfterBlock.js" crossorigin></script>
-    <script src="https://static.cmcdn.net/23/1.1.20/scripts/browser.js" crossorigin></script>
-    <script src="https://static.cmcdn.net/23/1.1.20/scripts/app.js" crossorigin></script>
+    <!-- LOADING FIX (added): These 23 library files previously loaded one at
+         a time, in sequence -- each one had to fully download AND run
+         before the next one even started downloading. Adding "defer" lets
+         the browser download all of them in parallel instead, while still
+         guaranteeing they execute in this exact same order afterward (that's
+         what "defer" means), so behavior shouldn't change, only load time.
+         Please test the site thoroughly after this change, since these are
+         third-party scripts this site doesn't control the internals of. -->
+    <script defer src="https://static.cmcdn.net/libs/player/3.8.2/hls.js"></script>
+    <script defer src="https://static.cmcdn.net/libs/corejs/2.9.0/corejs.js" integrity="sha256-H4af5AcfTSO9YmJ79ol6bab6+TzSWWmMXKM4fwdxRQU=" crossorigin></script>
+    <script defer src="https://static.cmcdn.net/libs/router/1.6.0/router.js" integrity="sha256-4IUSi5DVzvBoIJVNfZ416+yuCOs+cry22iJG94eaqW8=" crossorigin></script>
+    <script defer src="https://static.cmcdn.net/libs/gestures/0.6.0/gestures.js" integrity="sha256-ylEa69hezIFUAga1cMRcngK6Tf9K+HJgzHUSPswYKoU=" crossorigin></script>
+    <script defer src="https://static.cmcdn.net/23/1.1.20/scripts/vendor/anime.js" crossorigin></script>
+    <script defer src="https://static.cmcdn.net/23/1.1.20/scripts/vendor/swiper.js" crossorigin></script>
+    <script defer src="https://static.cmcdn.net/libs/cursor/0.6.3/cursor.js" integrity="sha256-K3IY3QiVV2UvpT+BaPTD2YjNCx5nT5LLJvNqGQ3L3Is=" crossorigin></script>
+    <script defer src="https://static.cmcdn.net/libs/lightbox/0.23.0/lightbox.js" integrity="sha256-t/UfAWPAS6cjMlcR5oslHiY3cL3IVuUpW/ceuFKBZC4=" crossorigin></script>
+    <script defer src="https://static.cmcdn.net/libs/forms/4.0.2/forms.js" integrity="sha256-GBwrpMjlOgCPfECaqKSY6jQZU4eKX9Uncc0w90muz94=" crossorigin></script>
+    <script defer src="https://static.cmcdn.net/libs/scrollable/3.4.0/scrollable.js" integrity="sha256-baiuPcjdbyEwBScpM1XFcd3KntTAMdNFrfEtB8+Qpm4=" crossorigin></script>
+    <script defer src="https://static.cmcdn.net/libs/player/3.8.2/player.js" integrity="sha256-5eC5ruDiSOZ8vs10G8QfH7KRtp3Rt8rYNhCUQE/6tPk=" crossorigin></script>
+    <script defer src="https://static.cmcdn.net/libs/lazyjs/2.7.0/lazyjs.js" integrity="sha256-LKzXP6kCFe7HjJizvZTZVZw9VUMXTvJ983WmdTBf5+o=" crossorigin></script>
+    <script defer src="https://static.cmcdn.net/23/1.1.20/scripts/chroma.js" crossorigin></script>
+    <script defer src="https://static.cmcdn.net/23/1.1.20/scripts/contrast.js" crossorigin></script>
+    <script defer src="https://static.cmcdn.net/23/1.1.20/scripts/functions.js" crossorigin></script>
+    <script defer src="https://static.cmcdn.net/23/1.1.20/scripts/fitty.js" crossorigin></script>
+    <script defer src="https://static.cmcdn.net/23/1.1.20/scripts/blocks.js" crossorigin></script>
+    <script defer src="https://static.cmcdn.net/23/1.1.20/scripts/transitions.js" crossorigin></script>
+    <script defer src="https://static.cmcdn.net/23/1.1.20/scripts/site/Navigation.js" crossorigin></script>
+    <script defer src="https://static.cmcdn.net/23/1.1.20/scripts/components/Flipbook.js" crossorigin></script>
+    <script defer src="https://static.cmcdn.net/23/1.1.20/scripts/components/BeforeAfterBlock.js" crossorigin></script>
+    <script defer src="https://static.cmcdn.net/23/1.1.20/scripts/browser.js" crossorigin></script>
+    <script defer src="https://static.cmcdn.net/23/1.1.20/scripts/app.js" crossorigin></script>
     
 
     <script>
